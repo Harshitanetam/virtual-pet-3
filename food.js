@@ -44,14 +44,17 @@ class Food{
        
     }
     bedroom(){
-        background(bedroom,550,500);
+        backgroundImage.addImage(bedroom)
+        backgroundImage.visible=true;
     }
 
     gardan(){
-        background(garden,550,500);
+        backgroundImage.addImage(garden)
+        backgroundImage.visible=true;
     }
 
     washroom(){
-        background(washroom,550,500);
+        backgroundImage.addImage(washroom)
+        backgroundImage.visible=true;
     }
 }
