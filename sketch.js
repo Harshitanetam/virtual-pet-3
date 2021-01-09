@@ -3,15 +3,16 @@ var foodStock,foodS,gamestate;
 var fedTime,lastFed;
 var feed,addFood;
 var foodObj;
-var washroom,livingRoom,garden;
+var washroom,livingRoom,garden,bedroom;
 var gameState,readState;
 
 function preload(){
   dogImg=loadImage("images/dogImg.png");
   dogImg1=loadImage("images/dogImg1.png");
- // washroom=loadImage("images/Wash Room.png");
-  //livingRoom=loadImage("images/Living Room.png");
-  //garden=loadImage("images/Garden.png");
+  washroom=loadImage("images/Wash Room.png");
+  livingRoom=loadImage("images/Living Room.png");
+  bedroom=loadImage("images/Bed Room.png");
+  garden=loadImage("images/Garden.png");
 }
 
 function setup() {
@@ -41,6 +42,7 @@ function setup() {
     gameState=data.val();
   })
   ;
+ // console.log(readState);
 }
 
 function draw() {  
@@ -48,6 +50,7 @@ background(46,139,87);
   foodObj.display();
   
   currentTime=hour();
+ // console.log(currentTime);
   if(currentTime==(lastFed+1)){
       update("Playing");
       foodObj.gardan();
@@ -69,7 +72,7 @@ background(46,139,87);
   fedTime.on("value",function(data){
     lastFed=data.val();
   });
-  
+  //console.log(lastFed);
   fill(255,255,254);
   textSize(15);
   if(lastFed>=12){
@@ -86,7 +89,7 @@ background(46,139,87);
     feed.hide();
     addFood.hide();
     dog.remove();
-
+   //console.log(gameState);
   }else{
     feed.show();
     addFood.show();
@@ -122,7 +125,10 @@ function addFoodS(){
 
 //function to update gamestates in database
 function update(state){
+ //console.log(state);
   database.ref('/').update({
-    gamestate:state
+    gameState:state
   })
 }
+
+
