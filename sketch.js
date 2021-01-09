@@ -5,6 +5,7 @@ var feed,addFood;
 var foodObj;
 var washroom,livingRoom,garden,bedroom;
 var gameState,readState;
+var backgroundImage;
 
 function preload(){
   dogImg=loadImage("images/dogImg.png");
@@ -42,6 +43,8 @@ function setup() {
     gameState=data.val();
   })
   ;
+  backgroundImage= createSprite(300,100);
+  backgroundImage.visible=false;
  // console.log(readState);
 }
 
@@ -65,6 +68,7 @@ background(46,139,87);
 
   }else{
       update("Hungry")
+      backgroundImage.visible=false;
       foodObj.display();
   }
 
@@ -107,7 +111,7 @@ function readStock(data){
    
 function feedDog(){
   dog.addImage(dogImg1);
-
+ console.log("fed");
   foodObj.updateFoodStock(foodObj.getFoodStock()-1);
   database.ref('/').update({
     Food:foodObj.getFoodStock(),
